@@ -4,13 +4,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Swarnim Tripathi — Designerly Engineer</title>
-  <meta name="description" content="Swarnim Tripathi — AI/ML engineer crafting human-grade systems with designer sensibility.">
+  <meta name="description" content="Swarnim Tripathi — AI/ML engineer crafting human-centered systems with precision, safety, and impact.">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#0b0b0c; --card:#121214; --fg:#eaeaf0; --muted:#a7a7b2;
-      --accent:#7ee787; --accent-2:#8aa7ff;
+      --bg:#0b0b0c; --bg-2:#0e0f12; --card:#121214; --fg:#eaeaf0; --muted:#a7a7b2;
+      --accent:#7ee787; --accent-2:#8aa7ff; --accent-3:#e28fff;
       --grid-gap: clamp(14px, 2vmin, 24px);
       --radius: 16px; --shadow: 0 10px 30px rgba(0,0,0,.35); --maxw: 1200px;
     }
@@ -18,16 +18,28 @@
     html,body{height:100%}
     body{
       margin:0;
-      background: radial-gradient(1200px 800px at 85% -10%, #1a1a20 0%, var(--bg) 55%) fixed, var(--bg);
+      background:
+        radial-gradient(1400px 900px at 85% -15%, #1a1a20 0%, var(--bg) 55%) fixed,
+        radial-gradient(900px 700px at -10% 30%, #121226 0%, rgba(18,18,38,0) 60%) fixed,
+        var(--bg);
       color:var(--fg);
       font: 400 16px/1.55 'General Sans','Inter',system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
       letter-spacing:.01em;
+      overflow-x:hidden;
     }
     a{color:inherit;text-decoration:none}
     .wrap{max-width: var(--maxw); margin: 0 auto; padding: 24px;}
+
+    /* Global micro interactions */
+    .hover-raise{transition: transform .25s ease, box-shadow .25s ease}
+    .hover-raise:hover{transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,.35)}
+    .tilt{transform-style: preserve-3d; will-change: transform}
+    .tilt:hover .tilt-children{transform: translateZ(20px)}
+    .magnetic{position:relative; transition: transform .12s ease-out}
+
     /* Header */
     header{
-      display:grid; grid-template-columns: 1.2fr .8fr; gap: var(--grid-gap); align-items: stretch; margin-top: 10vmin;
+      display:grid; grid-template-columns: 1.2fr .8fr; gap: var(--grid-gap); align-items: stretch; margin-top: 9vmin;
     }
     .hero{
       background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0));
@@ -37,60 +49,79 @@
       box-shadow: var(--shadow);
       position: relative; overflow: hidden; isolation:isolate;
     }
-    .hero:before{
-      content:""; position:absolute; inset:-20%;
+    /* Parallax glow following cursor */
+    .glow-blob{
+      position:absolute; width:520px; height:520px; border-radius:50%;
       background:
-        radial-gradient(400px 200px at 20% 10%, rgba(126,231,135,.10), transparent 50%),
-        radial-gradient(300px 160px at 90% 20%, rgba(138,167,255,.12), transparent 60%);
-      filter: blur(8px); z-index:-1;
+        radial-gradient(circle at 30% 30%, rgba(126,231,135,.22), rgba(126,231,135,0) 60%),
+        radial-gradient(circle at 70% 70%, rgba(138,167,255,.22), rgba(138,167,255,0) 60%);
+      filter: blur(22px); mix-blend-mode: screen; pointer-events:none; opacity:.85;
+      transform: translate(-50%,-50%);
     }
     .tag{
       display:inline-flex; gap:10px; align-items:center;
       padding:8px 12px; border-radius:999px; border:1px solid rgba(255,255,255,.08);
       color:var(--muted); background: rgba(255,255,255,.02);
       font-size:13px; letter-spacing:.08em; text-transform:uppercase;
+      backdrop-filter: blur(4px);
     }
     .name{
       margin: 16px 0 12px; font-family:'Clash Display','General Sans',system-ui;
-      font-weight:700; line-height:.95; font-size: clamp(44px, 8vw, 86px);
+      font-weight:700; line-height:.9; font-size: clamp(48px, 9vw, 92px);
       letter-spacing:-.02em;
+      background: linear-gradient(90deg, #fff, #cfe6ff 30%, #dfffe8 60%, #fff);
+      -webkit-background-clip:text; background-clip:text; color: transparent;
+      animation: sheen 6s linear infinite;
+    }
+    @keyframes sheen{
+      0%{background-position: 0%}
+      100%{background-position: 400%}
     }
     .subtitle{
       font-size: clamp(16px, 2.2vw, 22px); color: var(--muted); max-width: 52ch;
     }
-    .glow{
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      -webkit-background-clip:text; background-clip:text; color: transparent;
-    }
+    .glow{background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent-3));
+      -webkit-background-clip:text; background-clip:text; color: transparent;}
     .pills{display:flex; flex-wrap:wrap; gap:10px; margin-top:18px}
     .pill{
-      padding:8px 12px; font-size:13px; border-radius:10px; color:#0c1012;
-      background: linear-gradient(180deg, #dfffe8, #96ffc1); border:1px solid rgba(0,0,0,.05);
+      padding:8px 12px; font-size:13px; border-radius:12px; color:#0c1012;
+      background: linear-gradient(180deg, #dfffe8, #96ffc1);
+      border:1px solid rgba(0,0,0,.05);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.5);
+      transition: transform .2s ease, box-shadow .2s ease;
     }
+    .pill:hover{transform: translateY(-2px); box-shadow: inset 0 1px 0 rgba(255,255,255,.6), 0 8px 16px rgba(0,0,0,.25)}
+    .topnav{margin:16px 0 4px; display:flex; flex-wrap:wrap; gap:10px}
+    .navbtn{
+      padding:8px 12px; border-radius:999px; border:1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.02); color:var(--fg); font-size:14px;
+      transition: background .2s ease, transform .15s ease;
+    }
+    .navbtn:hover{background: rgba(255,255,255,.06); transform: translateY(-1px)}
+
     .side-card{
       background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0));
       border:1px solid rgba(255,255,255,.06); border-radius: var(--radius); padding: 22px;
       display:flex; flex-direction:column; gap:16px; box-shadow: var(--shadow);
       min-height: 100%;
     }
-    .kpi{
-      display:grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
-    }
+    .kpi{display:grid; grid-template-columns: repeat(3, 1fr); gap: 12px;}
     .kpi .tile{
       background:#0f1113; border:1px solid rgba(255,255,255,.06); border-radius:12px; padding:12px 14px;
+      position:relative; overflow:hidden;
     }
     .tile .num{font-family:'Clash Display'; font-size:28px;}
     .tile .desc{color:var(--muted); font-size:12px}
+    .tile:after{
+      content:""; position:absolute; inset:auto -20% -60% -20%;
+      height:80%; background: radial-gradient(120px 80px at 50% 0%, rgba(126,231,135,.18), transparent 60%);
+      filter: blur(12px); opacity:0; transition: opacity .3s ease;
+    }
+    .tile:hover:after{opacity:1}
+
     /* Sections */
-    nav.topnav{
-      margin-top: 22px; display:flex; gap:12px; flex-wrap:wrap;
-    }
-    .navbtn{
-      padding:8px 12px; border-radius:999px; border:1px solid rgba(255,255,255,.08);
-      background: rgba(255,255,255,.02); color:var(--fg); font-size:14px;
-    }
     section{
-      margin-top: 6vmin;
+      margin-top: 6.5vmin;
       display:grid; grid-template-columns: .8fr 1.2fr; gap: var(--grid-gap);
       align-items: start;
     }
@@ -106,8 +137,9 @@
       border-radius: clamp(14px, 2.4vmin, 20px);
       padding: clamp(16px, 2.6vmin, 24px);
       position:relative; overflow:hidden;
+      transition: transform .25s ease, border-color .25s ease, background .25s ease;
     }
-    .card:hover{transform: translateY(-3px); transition: transform .25s ease}
+    .card:hover{transform: translateY(-3px); border-color: rgba(255,255,255,.12); background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,0))}
     .card .eyebrow{
       font-size:12px; letter-spacing:.12em; text-transform:uppercase; color: var(--muted);
     }
@@ -118,7 +150,9 @@
     .meta .chip{
       padding:6px 10px; border-radius: 999px; font-size:12px; color: var(--muted);
       border:1px solid rgba(255,255,255,.08); background: rgba(255,255,255,.02);
+      transition: transform .2s ease, background .2s ease;
     }
+    .meta .chip:hover{transform: translateY(-2px); background: rgba(255,255,255,.07)}
     .list{display:grid; gap:10px; color: var(--fg)}
     .list li{list-style:none; display:grid; grid-template-columns: 16px 1fr; gap:10px}
     .bullet{
@@ -126,6 +160,33 @@
       background: radial-gradient(circle at 30% 30%, var(--accent), var(--accent-2));
       filter: drop-shadow(0 0 6px rgba(126,231,135,.5));
     }
+
+    /* Before/After component */
+    .ba{
+      position:relative; width:100%; aspect-ratio: 16/9; border-radius:14px; overflow:hidden;
+      background:#0e1116; border:1px solid rgba(255,255,255,.06);
+      user-select:none; touch-action: none;
+    }
+    .ba img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; pointer-events:none}
+    .ba .after{clip-path: inset(0 0 0 50%)}
+    .ba .handle{
+      position:absolute; top:0; bottom:0; left:50%; width:2px; background: rgba(255,255,255,.5);
+      box-shadow: 0 0 0 1px rgba(255,255,255,.2);
+    }
+    .ba .knob{
+      position:absolute; top:50%; left:50%; transform: translate(-50%,-50%);
+      width:36px; height:36px; border-radius:50%;
+      background: linear-gradient(180deg, #ffffff, #b7c6ff);
+      border: 1px solid rgba(0,0,0,.2);
+      box-shadow: 0 6px 14px rgba(0,0,0,.35);
+    }
+    .ba .hint{
+      position:absolute; bottom:10px; left:50%; transform:translateX(-50%);
+      background: rgba(0,0,0,.4); color:#fff; font-size:12px; padding:6px 10px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.12); backdrop-filter: blur(6px);
+      opacity:.9;
+    }
+
     /* Footer */
     footer{
       margin: 8vmin 0 6vmin; display:flex; align-items:center; justify-content:space-between; gap:20px;
@@ -135,10 +196,22 @@
     .contact{
       padding:8px 12px; border-radius:10px; border:1px solid rgba(255,255,255,.08);
       background: rgba(255,255,255,.02); color: var(--fg); font-size:14px;
+      transition: transform .15s ease, background .2s ease;
     }
-    /* Motion */
-    .reveal{opacity:0; transform: translateY(12px); transition: all .6s cubic-bezier(.2,.8,.2,1)}
+    .contact:hover{transform: translateY(-2px); background: rgba(255,255,255,.06)}
+
+    /* Reveal and stagger */
+    .reveal{opacity:0; transform: translateY(14px); transition: opacity .6s cubic-bezier(.2,.8,.2,1), transform .6s cubic-bezier(.2,.8,.2,1)}
     .reveal.visible{opacity:1; transform: translateY(0)}
+    .stagger > *{opacity:0; transform: translateY(10px)}
+    .stagger.visible > *{animation: rise .6s cubic-bezier(.2,.8,.2,1) forwards}
+    .stagger.visible > *:nth-child(1){animation-delay:.04s}
+    .stagger.visible > *:nth-child(2){animation-delay:.1s}
+    .stagger.visible > *:nth-child(3){animation-delay:.16s}
+    .stagger.visible > *:nth-child(4){animation-delay:.22s}
+    .stagger.visible > *:nth-child(5){animation-delay:.28s}
+    @keyframes rise {to{opacity:1; transform: translateY(0)}}
+
     /* Responsive */
     @media (max-width: 940px){
       header, section{grid-template-columns: 1fr; }
@@ -147,15 +220,16 @@
     }
     @media (max-width: 540px){
       .kpi{grid-template-columns: repeat(2, minmax(0,1fr))}
-      .name{font-size: clamp(38px, 10vw, 64px)}
+      .name{font-size: clamp(40px, 10vw, 72px)}
     }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <header class="reveal">
-      <div class="hero">
-        <span class="tag">Currently: B.Tech CSE @ VIT Chennai</span>
+    <header class="reveal tilt" id="hero">
+      <div class="hero hover-raise tilt-children">
+        <div class="glow-blob" id="glow"></div>
+        <span class="tag magnetic" data-magnet>Currently: B.Tech CSE @ VIT Chennai</span>
         <h1 class="name">Swarnim Tripathi</h1>
         <p class="subtitle">
           Designerly engineer building <span class="glow">human‑centered AI</span>, reliable ML systems, and deployable products.
@@ -167,9 +241,9 @@
           <a class="navbtn" href="#certs">Signals</a>
           <a class="navbtn" href="#contact">Contact</a>
         </nav>
-        <div class="pills" id="skills-pills"></div>
+        <div class="pills stagger" id="skills-pills"></div>
       </div>
-      <aside class="side-card">
+      <aside class="side-card hover-raise">
         <div class="kpi">
           <div class="tile">
             <div class="num">89%</div>
@@ -191,7 +265,7 @@
     <section class="reveal" id="projects">
       <div class="section-title">Project Systems</div>
       <div class="cards">
-        <article class="card">
+        <article class="card hover-raise">
           <div class="eyebrow">Jan 2025 · Python, PyTorch, TinyLlama, LoRA, Docker</div>
           <h3>Promptimus — Neural Shell Assistant</h3>
           <div class="meta">
@@ -200,13 +274,20 @@
             <span class="chip">Containers</span>
           </div>
           <ul class="list">
-            <li><span class="bullet"></span><span>Fine‑tuned TinyLlama achieving 89% command accuracy — a 24% lift over base via LoRA on 150+ Stack Exchange datasets.</span></li>
-            <li><span class="bullet"></span><span>Implemented automated dry‑run safety layer with 95% compliance preventing dangerous command execution.</span></li>
-            <li><span class="bullet"></span><span>Production‑ready Dockerized app with API pipeline that cut manual data curation by 60%.</span></li>
+            <li><span class="bullet"></span><span>Fine‑tuned TinyLlama achieving 89% command accuracy — a 24% lift via LoRA on 150+ Stack Exchange datasets.</span></li>
+            <li><span class="bullet"></span><span>Automated dry‑run safety layer with 95% compliance preventing dangerous command execution.</span></li>
+            <li><span class="bullet"></span><span>Production‑ready Dockerized app with API pipeline cutting manual data curation by 60%.</span></li>
           </ul>
+          <div class="ba" aria-label="Before After comparison" style="margin-top:14px">
+            <img class="before" src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1600&auto=format&fit=crop" alt="Before">
+            <img class="after"  src="https://images.unsplash.com/photo-1555421689-43cad7100751?q=80&w=1600&auto=format&fit=crop" alt="After">
+            <div class="handle"></div>
+            <div class="knob"></div>
+            <div class="hint">Drag to compare</div>
+          </div>
         </article>
 
-        <article class="card">
+        <article class="card hover-raise">
           <div class="eyebrow">Dec 2024 · Python, FastAPI, PostgreSQL, Docker, ML</div>
           <h3>LearnBuddy — Adaptive Learning Platform</h3>
           <div class="meta">
@@ -215,13 +296,13 @@
             <span class="chip">One‑Command Deploy</span>
           </div>
           <ul class="list">
-            <li><span class="bullet"></span><span>Reinforcement learning engine improved learner retention by 15% via dynamic difficulty adjustments.</span></li>
+            <li><span class="bullet"></span><span>Reinforcement learning engine improved learner retention by 15% via dynamic difficulty.</span></li>
             <li><span class="bullet"></span><span>Automated grading reached 90% accuracy, outperforming keyword methods by 25%.</span></li>
             <li><span class="bullet"></span><span>Docker Compose enabled one‑command multi‑env deployment.</span></li>
           </ul>
         </article>
 
-        <article class="card">
+        <article class="card hover-raise">
           <div class="eyebrow">Oct 2024 · Python, scikit‑learn, SGDRegressor</div>
           <h3>Anxiety Level Predictor</h3>
           <div class="meta">
@@ -230,8 +311,8 @@
             <span class="chip">Model Optimization</span>
           </div>
           <ul class="list">
-            <li><span class="bullet"></span><span>Engineered robust pipeline with imputation and encoders for lifestyle datasets.</span></li>
-            <li><span class="bullet"></span><span>Trained SGDRegressor to predict anxiety levels on a 1–10 scale with competitive MAE.</span></li>
+            <li><span class="bullet"></span><span>Robust pipeline with imputation and encoders for lifestyle datasets.</span></li>
+            <li><span class="bullet"></span><span>SGDRegressor predicts anxiety level (1–10) with competitive MAE.</span></li>
           </ul>
         </article>
       </div>
@@ -240,7 +321,7 @@
     <section class="reveal" id="skills">
       <div class="section-title">Capabilities</div>
       <div class="cards">
-        <div class="card">
+        <div class="card hover-raise">
           <h3>Technical Stack</h3>
           <div class="meta">
             <span class="chip">Python</span><span class="chip">C++</span><span class="chip">JavaScript</span>
@@ -266,7 +347,7 @@
           </div>
         </div>
 
-        <div class="card">
+        <div class="card hover-raise">
           <h3>Education</h3>
           <p><strong>Vellore Institute of Technology, Chennai</strong><br/>
           Bachelor of Technology in Computer Science and Engineering<br/>
@@ -278,7 +359,7 @@
     <section class="reveal" id="certs">
       <div class="section-title">Signals</div>
       <div class="cards">
-        <article class="card">
+        <article class="card hover-raise">
           <div class="eyebrow">2025</div>
           <h3>Certifications</h3>
           <ul class="list">
@@ -295,7 +376,7 @@
     <section class="reveal" id="contact">
       <div class="section-title">Get in Touch</div>
       <div class="cards">
-        <div class="card">
+        <div class="card hover-raise">
           <h3>Let’s build something</h3>
           <p class="subtitle">Open to research collaborations, ML product engineering, and safety‑critical AI.</p>
           <div class="contacts" id="contacts-form"></div>
@@ -310,10 +391,9 @@
   </div>
 
   <script>
-    // Data layer
+    // Content data
     const data = {
       name: "Swarnim Tripathi",
-      headline: "Designerly engineer building human‑centered AI, reliable ML systems, and deployable products.",
       contacts: [
         { label: "Phone", href: "tel:+4917607260185", text: "+49 176 07260185" },
         { label: "Email", href: "mailto:swarnim.tr@gmail.com", text: "swarnim.tr@gmail.com" },
@@ -328,14 +408,16 @@
       ]
     };
 
+    // Mount helpers
     function mountContacts(el){
       data.contacts.forEach(c => {
         const a = document.createElement('a');
-        a.className = 'contact';
+        a.className = 'contact magnetic';
         a.href = c.href;
         a.target = c.href.startsWith('http') ? '_blank' : '_self';
         a.rel = 'noopener';
         a.textContent = c.text;
+        a.dataset.magnet = "";
         el.appendChild(a);
       });
     }
@@ -350,17 +432,104 @@
       });
     }
 
+    // Reveal on scroll with stagger
     function revealOnScroll(){
-      const els = document.querySelectorAll('.reveal');
       const io = new IntersectionObserver((entries)=>{
         entries.forEach(e=>{
-          if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
+          if(e.isIntersecting){
+            e.target.classList.add('visible');
+            const st = e.target.querySelector('.stagger');
+            if(st) st.classList.add('visible');
+            io.unobserve(e.target);
+          }
         });
       }, {rootMargin: '0px 0px -10% 0px', threshold: 0.1});
-      els.forEach(el=>io.observe(el));
+      document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
     }
 
-    // Simple contact block duplication
+    // Hero glow follows cursor (parallax)
+    function heroGlow(){
+      const hero = document.querySelector('.hero');
+      const glow = document.getElementById('glow');
+      hero.addEventListener('pointermove', (e)=>{
+        const r = hero.getBoundingClientRect();
+        const x = e.clientX - r.left, y = e.clientY - r.top;
+        glow.style.left = x + 'px';
+        glow.style.top = y + 'px';
+      });
+      hero.addEventListener('pointerleave', ()=>{
+        glow.style.left = '60%';
+        glow.style.top = '20%';
+      });
+      glow.style.left = '60%'; glow.style.top = '20%';
+    }
+
+    // Subtle magnetic hover for tagged elements
+    function magneticHover(){
+      const strength = 12; // px
+      function move(e){
+        const el = e.currentTarget;
+        const rect = el.getBoundingClientRect();
+        const mx = e.clientX - (rect.left + rect.width/2);
+        const my = e.clientY - (rect.top + rect.height/2);
+        el.style.transform = `translate(${(mx/rect.width)*strength}px, ${(my/rect.height)*strength}px)`;
+      }
+      function reset(e){ e.currentTarget.style.transform = 'translate(0,0)' }
+      document.querySelectorAll('[data-magnet]').forEach(el=>{
+        el.addEventListener('pointermove', move);
+        el.addEventListener('pointerleave', reset);
+      });
+    }
+
+    // 3D tilt on header
+    function tiltCard(){
+      const root = document.getElementById('hero');
+      const max = 6; // deg
+      root.addEventListener('pointermove', (e)=>{
+        const r = root.getBoundingClientRect();
+        const px = (e.clientX - r.left)/r.width - .5;
+        const py = (e.clientY - r.top)/r.height - .5;
+        root.style.transform = `rotateX(${(-py*max)}deg) rotateY(${(px*max)}deg)`;
+      });
+      root.addEventListener('pointerleave', ()=>{ root.style.transform = 'rotateX(0) rotateY(0)'; });
+    }
+
+    // Before/After drag
+    function initBeforeAfter(){
+      document.querySelectorAll('.ba').forEach(wrapper=>{
+        const after = wrapper.querySelector('.after');
+        const handle = wrapper.querySelector('.handle');
+        const knob = wrapper.querySelector('.knob');
+        let dragging = false;
+
+        const setX = (clientX)=>{
+          const r = wrapper.getBoundingClientRect();
+          let x = Math.min(Math.max(clientX - r.left, 0), r.width);
+          const pct = (x / r.width) * 100;
+          after.style.clipPath = `inset(0 0 0 ${pct}%)`;
+          handle.style.left = pct + '%';
+          knob.style.left = pct + '%';
+        };
+
+        const start = (e)=>{ dragging = true; wrapper.classList.add('dragging'); setX(e.clientX ?? e.touches[0].clientX); };
+        const move  = (e)=>{ if(!dragging) return; setX((e.clientX ?? (e.touches && e.touches[0].clientX))); };
+        const end   = ()=>{ dragging = false; wrapper.classList.remove('dragging'); };
+
+        wrapper.addEventListener('pointerdown', start);
+        window.addEventListener('pointermove', move);
+        window.addEventListener('pointerup', end);
+
+        // Touch support
+        wrapper.addEventListener('touchstart', start, {passive:true});
+        window.addEventListener('touchmove', move, {passive:false});
+        window.addEventListener('touchend', end);
+
+        // Start centered
+        setX(wrapper.getBoundingClientRect().left + wrapper.clientWidth/2);
+      });
+    }
+
+    // Initialize
     document.addEventListener('DOMContentLoaded', ()=>{
       document.getElementById('year').textContent = new Date().getFullYear();
       mountContacts(document.getElementById('contacts'));
@@ -368,6 +537,10 @@
       mountContacts(document.getElementById('contacts-form'));
       mountPills();
       revealOnScroll();
+      heroGlow();
+      magneticHover();
+      tiltCard();
+      initBeforeAfter();
     });
   </script>
 </body>
