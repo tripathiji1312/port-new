@@ -1,0 +1,72 @@
+Swarnim Tripathi
++91 7607260185 | swarnim.tr@gmail.com | LinkedIn | GitHub | Portfolio
+Lucknow, Uttar Pradesh, India
+
+Education
+Vellore Institute of Technology
+Bachelor of Technology in Computer Science and Engineering
+
+Chennai, India
+July 2024 – May 2028
+
+Technical Skills
+Programming Languages: Python, C++, JavaScript, SQL, Kotlin, Rust, HTML, CSS
+Machine Learning and AI: PyTorch, TensorFlow, scikit-learn, Transformers, Fine-tuning, LoRA, Neural Networks,
+NLP
+Frameworks and Libraries: FastAPI, Flask, Django, Pandas, NumPy, Matplotlib, XGBoost
+Databases and Storage: PostgreSQL, MongoDB, SQL, NoSQL
+DevOps and Cloud: Docker, Docker Compose, Git, Linux, CI/CD, Version Control
+Data Science: Feature Engineering, Model Deployment, Data Preprocessing, Statistical Analysis, Reinforcement
+Learning
+
+Projects
+Aura — AI-Powered Diabetes Management | Python, Flask, Keras, LSTM, PostgreSQL, NLP | GitHub
+2025
+• Engineered a hybrid glucose forecasting system combining a personalized, fine-tuned LSTM model with an
+event-based adjustment layer, improving prediction accuracy by adapting to individual user data.
+• Trained a Deep Q-Network (DQN) agent within a custom physiological simulator to recommend optimal insulin
+dosing strategies, achieving a 15% improvement in simulated Time-in-Range.
+• Developed a sophisticated NLP engine to accurately extract dietary and activity data from unstructured user logs,
+integrating it into a full-stack Flask and PostgreSQL application with real-time dashboards and automated PDF
+reporting.
+Promptimus - AI Prompt Optimizer | Python, PyTorch, T5, LoRA, RAG | GitHub
+October 2025
+• Architected an AI prompt optimizer by fine-tuning a 220M parameter T5 model with LoRA and a RAG pipeline to
+automatically rewrite user queries for enhanced LLM performance
+• Solved the key challenge of preserving user intent by creating a custom dataset of 200,000 examples and
+implementing a constrained beam search that used semantic similarity to guide output
+• Achieved an average ROUGE-L score of 0.72 against human-written gold standard answers, representing a 28%
+improvement over the baseline from un-optimized prompts
+LearnBuddy - Adaptive Learning Platform | Python, Flask, PostgreSQL, ML | GitHub
+October 2025
+• Architected a hybrid adaptive learning engine combining a Multi-Armed Bandit (MAB) with a heuristic rule
+system, analyzing the 12 most recent user attempts to personalize content difficulty.
+• Implemented the MAB to manage the exploration-exploitation trade-off, automatically advancing difficulty when
+confidence in the current level exceeded 75%.
+• Engineered the heuristic layer for rapid adaptation, triggering difficulty increases after 2 consecutive correct answers
+(80% success rate) and intervention when success fell below 30%.
+Anxiety Level Predictor | Python, scikit-learn, SGDRegressor, Data Analysis | GitHub
+April 2025
+• Processed lifestyle datasets using advanced encoding techniques and trained SGDRegressor model predicting
+anxiety levels on 1-10 scale
+• Implemented robust preprocessing pipeline with missing value imputation achieving competitive MAE through
+optimization
+
+Certifications
+Machine Learning Specialization
+
+June 2025
+
+DeepLearning.AI and Stanford University
+
+Coursera
+
+Data Analysis with Python
+
+May 2025
+
+freeCodeCamp
+
+Online Certificate
+
+
