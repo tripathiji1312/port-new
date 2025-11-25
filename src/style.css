@@ -213,6 +213,29 @@ section {
   color: #000;
 }
 
+/* Hugging Face Button Accent */
+.btn-hero.btn-hf {
+  background: linear-gradient(135deg, rgba(255, 213, 0, 0.15), rgba(255, 167, 38, 0.1));
+  border-color: rgba(255, 213, 0, 0.3);
+}
+
+.btn-hero.btn-hf:hover {
+  background: linear-gradient(135deg, #ffd500, #ffab00);
+  color: #000;
+  border-color: #ffd500;
+  box-shadow: 0 0 25px rgba(255, 213, 0, 0.4);
+}
+
+.btn-hero.btn-hf .hf-icon {
+  font-size: 1.2rem;
+  filter: grayscale(0);
+  transition: transform 0.3s ease;
+}
+
+.btn-hero.btn-hf:hover .hf-icon {
+  transform: scale(1.2) rotate(-10deg);
+}
+
 /* --- MANIFESTO --- */
 .manifesto {
   font-size: clamp(2rem, 4.5vw, 4rem);
@@ -506,6 +529,34 @@ section {
 .btn-source:hover {
   color: var(--accent);
   padding-bottom: 8px;
+}
+
+/* Live Demo Button */
+.btn-live-demo {
+  font-family: var(--font-code);
+  font-size: 0.9rem;
+  color: #000;
+  text-decoration: none;
+  background: linear-gradient(135deg, var(--accent), #b8e600);
+  padding: 8px 16px;
+  border-radius: 6px;
+  margin-left: 12px;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  box-shadow: 0 0 20px rgba(204, 255, 0, 0.2);
+}
+
+.btn-live-demo i {
+  font-size: 1.1rem;
+}
+
+.btn-live-demo:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 30px rgba(204, 255, 0, 0.5);
+  background: linear-gradient(135deg, #d4ff33, var(--accent));
 }
 
 /* --- MARQUEE --- */
