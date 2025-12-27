@@ -511,6 +511,143 @@ section {
   color: var(--accent);
 }
 
+/* --- EXPERIENCE --- */
+.exp-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding-left: 2rem;
+  border-left: 1px solid var(--border);
+  margin-left: 1rem;
+}
+
+.exp-card {
+  position: relative;
+  transition: 0.3s;
+}
+
+.exp-card::before {
+  content: '';
+  position: absolute;
+  left: -2.4rem;
+  /* Align with border-left center (-2rem padding -0.4rem offset) */
+  top: 0.5rem;
+  width: 12px;
+  height: 12px;
+  background: var(--bg);
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  transition: 0.3s;
+  box-shadow: 0 0 0 var(--bg);
+  /* Outline effect */
+}
+
+/* Fix connector line position logic */
+.exp-grid {
+  position: relative;
+}
+
+/* The dot needs to sit exactly on the line border. 
+   Grid has 2rem padding left. Line is at left: 0 of grid.
+   So dot should be at left: - (half dot width + half line width).
+   Line is 1px. Dot is 12px (plus 4px border total 16px).
+   Center of line is 0.5px. Center of dot is 8px.
+   Left should be -7.5px relative to border? 
+   But the border is on the parent div.
+*/
+.exp-card::before {
+  left: calc(-2rem - 0.5rem);
+  /* -2rem padding - radius approx */
+}
+
+/* Let's trust visual alignment or use a specific marker wrapper */
+
+.exp-card:hover::before {
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+  transform: scale(1.2);
+}
+
+.exp-header {
+  margin-bottom: 1.5rem;
+}
+
+.exp-date {
+  font-family: var(--font-code);
+  color: var(--accent);
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+  display: inline-block;
+  background: rgba(204, 255, 0, 0.05);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.exp-role {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: #fff;
+  margin: 0.5rem 0;
+  line-height: 1.1;
+}
+
+.exp-company {
+  font-family: var(--font-code);
+  font-size: 1rem;
+  color: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+.company-name {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.company-tag {
+  color: var(--text-dim);
+  font-size: 0.75rem;
+  border: 1px solid var(--border);
+  padding: 2px 8px;
+  border-radius: 100px;
+  text-transform: uppercase;
+}
+
+.company-loc {
+  color: #666;
+  font-size: 0.85rem;
+}
+
+.exp-bullets {
+  list-style: none;
+  border-left: 2px solid rgba(255, 255, 255, 0.05);
+  padding-left: 1.5rem;
+}
+
+.exp-bullets li {
+  color: var(--text-dim);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 1rem;
+  font-size: 1.05rem;
+}
+
+.bullet-icon {
+  color: var(--accent);
+  font-family: var(--font-code);
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+/* Highlight inside text */
+.highlight {
+  color: #fff;
+  font-weight: 500;
+}
+
 /* --- PROJECTS (Blueprint) --- */
 .project-card {
   display: grid;

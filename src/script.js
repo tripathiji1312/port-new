@@ -118,6 +118,14 @@ gsap.utils.toArray('.reveal-oss').forEach(card => {
   });
 });
 
+// Experience - INDIVIDUAL TRIGGERS
+gsap.utils.toArray('.reveal-exp').forEach(card => {
+  gsap.from(card, {
+    scrollTrigger: { trigger: card, start: "top 90%" },
+    x: -20, opacity: 0, duration: 0.8, ease: "power2.out"
+  });
+});
+
 // Projects - INDIVIDUAL TRIGGERS (Fixes visibility bug)
 gsap.utils.toArray('.reveal-project').forEach(card => {
   gsap.from(card, {
@@ -168,6 +176,7 @@ function getSecName(sec) {
   if (sec.classList.contains('hero')) return "HERO";
   if (sec.querySelector('.modules-grid')) return "SYSTEMS";
   if (sec.querySelector('.oss-grid')) return "OSS";
+  if (sec.querySelector('.exp-grid')) return "LOGS";
   if (sec.querySelector('.project-card')) return "OPERATIONS";
   if (sec.querySelector('.human-grid-3d')) return "HUMAN";
   if (sec.classList.contains('footer')) return "TERMINAL";
