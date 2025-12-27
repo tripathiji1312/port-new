@@ -110,6 +110,14 @@ gsap.from(".reveal-module", {
   y: 50, opacity: 0, duration: 1, stagger: 0.15, ease: "power2.out"
 });
 
+// Open Source Contributions - INDIVIDUAL TRIGGERS
+gsap.utils.toArray('.reveal-oss').forEach(card => {
+  gsap.from(card, {
+    scrollTrigger: { trigger: card, start: "top 90%" },
+    y: 50, opacity: 0, duration: 0.8, ease: "power2.out"
+  });
+});
+
 // Projects - INDIVIDUAL TRIGGERS (Fixes visibility bug)
 gsap.utils.toArray('.reveal-project').forEach(card => {
   gsap.from(card, {
@@ -159,6 +167,7 @@ document.querySelectorAll('section').forEach(sec => {
 function getSecName(sec) {
   if (sec.classList.contains('hero')) return "HERO";
   if (sec.querySelector('.modules-grid')) return "SYSTEMS";
+  if (sec.querySelector('.oss-grid')) return "OSS";
   if (sec.querySelector('.project-card')) return "OPERATIONS";
   if (sec.querySelector('.human-grid-3d')) return "HUMAN";
   if (sec.classList.contains('footer')) return "TERMINAL";
@@ -631,26 +640,26 @@ cloneButtons.forEach(btn => {
   btn.addEventListener('click', async (e) => {
     e.preventDefault(); // Prevent default button behavior
     const repoUrl = btn.getAttribute('data-repo');
-    
+
     if (repoUrl) {
       try {
         await navigator.clipboard.writeText(repoUrl);
-        
+
         // Visual Feedback
         const originalText = btn.innerText;
         btn.innerText = ":: Copied!";
         btn.classList.add('copied'); // Optional: Add a class for styling if needed
-        
+
         setTimeout(() => {
           btn.innerText = originalText;
           btn.classList.remove('copied');
         }, 2000);
-        
+
       } catch (err) {
         console.error('Failed to copy: ', err);
         btn.innerText = ":: Error!";
         setTimeout(() => {
-            btn.innerText = ":: Clone Repo";
+          btn.innerText = ":: Clone Repo";
         }, 2000);
       }
     }
