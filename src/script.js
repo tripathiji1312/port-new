@@ -642,35 +642,42 @@ try {
   });
 } catch (e) { console.log(e); }
 
-// 10. Clone Repo Button Functionality
-const cloneButtons = document.querySelectorAll('.copy-clone-btn');
+// 11. Smart Section Snapping (Added based on request)
+ScrollTrigger.create({
+  trigger: "body",
+  start: "top top",
+  end: "bottom bottom",
+  snap: {
+    snapTo: (progress, self) => {
+      const sections = gsap.utils.toArray('section');
+      const totalScroll = self.end; // Total scrollable distance
+      
+      // Calculate normalized snap points for each section top
+      const snapPoints = sections.map(s => s.offsetTop / totalScroll);
+      
+      // Find the closest section
+      const closest = snapPoints.reduce((prev, curr) => {
+        return (Math.abs(curr - progress) < Math.abs(prev - progress) ? curr : prev);
+      });
 
-cloneButtons.forEach(btn => {
-  btn.addEventListener('click', async (e) => {
-    e.preventDefault(); // Prevent default button behavior
-    const repoUrl = btn.getAttribute('data-repo');
+      // "Except the last" logic:
+      // If we are closer to the Footer (last section) than the second-to-last,
+      // allow free scrolling (return current progress).
+      // Note: snapPoints includes the footer.
+      const lastPoint = snapPoints[snapPoints.length - 1];
+      
+      // Threshold: if we are past the midway point between 2nd-last and last
+      const secondLast = snapPoints[snapPoints.length - 2] || 0;
+      const threshold = (secondLast + lastPoint) / 2;
 
-    if (repoUrl) {
-      try {
-        await navigator.clipboard.writeText(repoUrl);
-
-        // Visual Feedback
-        const originalText = btn.innerText;
-        btn.innerText = ":: Copied!";
-        btn.classList.add('copied'); // Optional: Add a class for styling if needed
-
-        setTimeout(() => {
-          btn.innerText = originalText;
-          btn.classList.remove('copied');
-        }, 2000);
-
-      } catch (err) {
-        console.error('Failed to copy: ', err);
-        btn.innerText = ":: Error!";
-        setTimeout(() => {
-          btn.innerText = ":: Clone Repo";
-        }, 2000);
+      if (progress > threshold) {
+        return progress; // Free scroll in the footer zone
       }
-    }
-  });
+      
+      return closest; // Snap to others
+    },
+    duration: { min: 0.3, max: 0.8 },
+    ease: "power2.inOut",
+    delay: 0.1 // Wait for user to stop scrolling
+  }
 });

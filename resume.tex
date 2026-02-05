@@ -1,0 +1,199 @@
+%-------------------------
+% Resume in Latex
+% Author : Jake Gutierrez
+% Based off of: https://github.com/sb2nov/resume
+% License : MIT
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\input{glyphtounicode}
+
+
+%----------FONT OPTIONS----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \parbox[t]{0.78\textwidth}{\raggedright\textit{\small#3}} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-6pt}
+}
+
+
+\newcommand{\resumeSubSubheading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    \textbf{\Huge \scshape Swarnim Tripathi} \\ \vspace{1pt}
+    \small +91 7607260185 $|$ \href{mailto:swarnim.tr@gmail.com}{\underline{swarnim.tr@gmail.com}} $|$ 
+    \href{https://linkedin.com/in/swarnim-trip}{\underline{linkedin.com/in/swarnim-trip}} $|$
+    \href{https://github.com/tripathiji1312}{\underline{github.com/tripathiji1312}} $|$
+    \href{https://tripathiji.vercel.app/}{\underline{Portfolio}}
+\end{center}
+
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Vellore Institute of Technology}{Chennai, India}
+      {Bachelor of Technology in Computer Science and Engineering}{July 2024 -- May 2028}
+  \resumeSubHeadingListEnd
+
+%-----------EXPERIENCE (IMPACT FIRST VERSION)-----------
+\section{Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Machine Learning Engineer Intern (Recommendation Logic)}{Dec. 2025 -- Present}
+      {Mirai (Fashion Tech)}{Hybrid}
+      \resumeItemListStart
+        \resumeItem{Enabled real-time matching of \textbf{16,000+ garments} by architecting a hybrid ranking engine using \textbf{CLIP embeddings} and \textbf{FAISS}, optimizing for high-throughput vector search}
+        \resumeItem{Solved the 'cold-start' problem for new users by formulating \textbf{context-aware User Vectors}, combining facial/physical attributes with rule-based filtering logic}
+        \resumeItem{Accomplished \textbf{sub-100ms inference latency} by partnering with backend teams to integrate optimized decision logic into \textbf{FastAPI} endpoints}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+%-----------Open Source Contributions-----------
+\section{Open Source Contributions}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {PyTorch (Official Repository)}{Remote}
+      {Open Source Contributor: \href{https://github.com/pytorch/pytorch/pull/174009}{\underline{Merged PR \#174009}} fixing user-facing \texttt{index.Tensor} behavior for empty indices; added regression tests in ATen indexing pipeline}{2026}
+
+    \resumeSubheading
+      {Google JAX (Official Repository)}{Remote}
+      {Open Source Contributor: \href{https://github.com/jax-ml/jax/pull/32046}{\underline{Merged PR \#32046}} aligning CUDA 13 installation instructions}{2025}
+  \resumeSubHeadingListEnd
+
+%-----------PROJECTS-----------
+\section{Projects}
+    \resumeSubHeadingListStart
+      \resumeProjectHeading
+          {\textbf{Ghost} $|$ \emph{Python, AST, LLM Agents} $|$ \href{https://github.com/tripathiji1312/ghost}{\underline{GitHub}} $|$ \href{https://pypi.org/project/ghosttest/}{\underline{PyPI}}}{Dec. 2025}
+          \resumeItemListStart
+            \resumeItem{Architected a local-first AI agent that monitors file systems via \textbf{Watchdog}, autonomously generating and executing \textbf{Pytest} suites upon code changes using Groq/Ollama inference}
+            \resumeItem{Engineered a \textbf{self-healing loop} that parses Python \textbf{AST} and stderr traces to identify failures, autonomously patching syntax errors and broken imports without human intervention}
+            \resumeItem{Implemented a "Judge" protocol to distinguish between buggy implementation vs. bad tests; published as a CLI tool on \textbf{PyPI} (`pip install ghosttest`) supporting local Llama-3 inference}
+          \resumeItemListEnd
+      \resumeProjectHeading
+          {\textbf{Aura} $|$ \emph{Python, Flask, LSTM, DQN} $|$ \href{https://github.com/tripathiji1312/Aura}{\underline{GitHub}}}{Sept. 2025}
+          \resumeItemListStart
+            \resumeItem{Built 3-layer LSTM on OhioT1DM dataset, forecasting glucose 1-2 hours ahead with 85\% accuracy (±20 mg/dL); incorporated NLP regex engine to parse dietary logs from natural language input}
+            \resumeItem{Trained Deep Q-Network (DQN) with custom reward function penalizing hypoglycemia 10x; achieved 15\% Time-in-Range improvement in simulation; deployed via Docker Compose to Render}
+          \resumeItemListEnd
+      \resumeProjectHeading
+          {\textbf{Promptimus} $|$ \emph{Python, PyTorch, T5, LoRA, RAG} $|$ \href{https://github.com/tripathiji1312/promptimus}{\underline{GitHub}}}{Aug. 2025}
+          \resumeItemListStart
+            \resumeItem{Fine-tuned 220M-parameter T5 via LoRA on 200K optimization pairs; implemented RAG pipeline guided by Sentence-Transformers; attained ROUGE-L 0.72 (28\% improvement over baseline)}
+            \resumeItem{Fine-tuned TinyLlama-1.1B via QLoRA (4-bit); built safety validation layer blocking 50+ dangerous patterns and served model via production-ready Docker container with sub-2s inference}
+          \resumeItemListEnd
+    \resumeSubHeadingListEnd
+
+%-----------Certifications-----------
+\section{Certifications}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Machine Learning Specialization}{DeepLearning.AI}
+      {Certified in Supervised Learning, Advanced Learning Algorithms, and Reinforcement Learning}{2025}
+  \resumeSubHeadingListEnd
+
+
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: Python (Expert), C++, Java, SQL, JavaScript, Bash} \\
+     \textbf{AI \& Agents}{: PyTorch, TensorFlow, Transformers, CLIP, FAISS, LLM Agents, Fine-tuning (LoRA), RAG, Reinforcement Learning (DQN), Abstract Syntax Trees (AST)} \\
+     \textbf{Backend \& DevOps}{: FastAPI, Flask, Docker, PyPI Packaging, CI/CD, PostgreSQL, Supabase, Linux} \\
+     \textbf{Tools}{: Git, Docker Compose, Groq Cloud, Google Colab, Hugging Face}
+    }}
+ \end{itemize}
+
+
+%-------------------------------------------
+\end{document}
