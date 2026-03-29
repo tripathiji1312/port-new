@@ -107,3 +107,42 @@ button:hover, .btn:hover {
   background-color: var(--text-color);
   color: var(--bg-color);
 }
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  :root {
+    --grid-gap: 1rem;
+  }
+  
+  .container {
+    padding: 0 1.25rem;
+  }
+  
+  .section-padding {
+    padding: 4rem 0;
+  }
+  
+  .text-huge {
+    font-size: clamp(3rem, 15vw, 5rem);
+    margin-left: 0;
+    line-height: 0.9;
+  }
+  
+  .text-large {
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
+  
+  .custom-cursor {
+    display: none !important;
+  }
+  
+  .audio-hud-container {
+    top: 1rem !important;
+    right: 1rem !important;
+  }
+  
+  button, .btn {
+    padding: 0.8rem 1.25rem;
+    font-size: 0.85rem;
+  }
+}

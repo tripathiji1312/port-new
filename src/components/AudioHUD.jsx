@@ -141,6 +141,7 @@ export default function AudioHUD() {
     <>
       {/* Custom Cursor Circle */}
       <motion.div
+        className="custom-cursor"
         style={{
           position: 'fixed',
           top: 0,
@@ -160,6 +161,7 @@ export default function AudioHUD() {
         transition={{ type: 'spring', stiffness: 500, damping: 28, mass: 0.5 }}
       />
       <motion.div
+        className="custom-cursor"
         style={{
           position: 'fixed',
           top: 0,
@@ -179,7 +181,7 @@ export default function AudioHUD() {
       />
 
       {/* Floating HUD */}
-      <div style={{ position: 'fixed', top: '2rem', right: '2rem', zIndex: 100, display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'flex-end', pointerEvents: 'none' }}>
+      <div className="audio-hud-container" style={{ position: 'fixed', top: '2rem', right: '2rem', zIndex: 100, display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'flex-end', pointerEvents: 'none' }}>
         
         <div className="mono" style={{ backgroundColor: 'var(--text-color)', color: 'var(--bg-color)', padding: '0.2rem 0.5rem', fontSize: '0.8rem', pointerEvents: 'auto' }}>
           SYS.LOC: MAIN_INDEX
