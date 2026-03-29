@@ -1,13 +1,28 @@
-import React from 'react';
-import { useEffect } from 'react';
-import { legacyMarkup } from './legacyMarkup';
+import React, { useEffect } from 'react';
+import Hero from './components/Hero';
+import About from './components/About';
+import Projects from './components/Projects';
+import Ricing from './components/Ricing';
+import Footer from './components/Footer';
 
 function App() {
+  // Polyfill/Simple Smooth Scroll using native scroll-behavior or Lenis later
   useEffect(() => {
-    import('./script.js');
+    document.documentElement.style.scrollBehavior = 'smooth';
+    return () => {
+      document.documentElement.style.scrollBehavior = 'auto';
+    };
   }, []);
 
-  return <div dangerouslySetInnerHTML={{ __html: legacyMarkup }} />;
+  return (
+    <div className="app-wrapper">
+      <Hero />
+      <About />
+      <Projects />
+      <Ricing />
+      <Footer />
+    </div>
+  );
 }
 
 export default App;
