@@ -1,11 +1,12 @@
 import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import useIsMobile from '../hooks/useIsMobile';
 
 export default function Hero() {
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 1000], [0, 300]);
   const y2 = useTransform(scrollY, [0, 1000], [0, -200]);
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  const isMobile = useIsMobile(768);
 
   return (
     <section className="container" style={{ 

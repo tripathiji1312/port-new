@@ -1,8 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import useIsMobile from '../hooks/useIsMobile';
 
 export default function About() {
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  const isMobile = useIsMobile(768);
 
   return (
     <section className="container section-padding border-top" id="about">
@@ -16,7 +17,11 @@ export default function About() {
             whileInView={{ opacity: 1, x: 0, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
-            style={{ textTransform: 'none', lineHeight: '1.2', fontSize: isMobile ? '1.5rem' : 'inherit' }}
+            style={{
+              textTransform: 'none',
+              lineHeight: '1.2',
+              ...(isMobile ? { fontSize: '1.5rem' } : {})
+            }}
           >
             Fueled by <span style={{ backgroundColor: 'var(--accent-yellow)', padding: isMobile ? '0 5px' : '0 10px' }}>curiosity</span>, synthetic retrowave beats, and 100% Arabica.
           </motion.h3>

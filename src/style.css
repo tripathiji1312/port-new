@@ -200,8 +200,8 @@ button:active, .btn:active {
   }
 }
 
-/* Large Mobile + Small Tablet (769px - 1024px) */
-@media (max-width: 1024px) {
+/* Large Mobile + Small Tablet (769px - 900px) */
+@media (max-width: 900px) {
   :root {
     --grid-gap: 1.25rem;
   }

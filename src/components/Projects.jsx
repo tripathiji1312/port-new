@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import useIsMobile from '../hooks/useIsMobile';
 
 const projects = [
   { 
@@ -48,7 +49,7 @@ const projects = [
 ];
 
 export default function Projects() {
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  const isMobile = useIsMobile(768);
   
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -78,7 +79,15 @@ export default function Projects() {
           whileHover={isMobile ? {} : { y: -5, boxShadow: '0 20px 0px var(--text-color)' }}
         >
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
-            <h3 className="text-large" style={{ color: 'var(--bg-color)', fontSize: isMobile ? '2rem' : 'inherit' }}>PYTORCH</h3>
+            <h3
+              className="text-large"
+              style={{
+                color: 'var(--bg-color)',
+                ...(isMobile ? { fontSize: 'clamp(2.4rem, 10vw, 3.25rem)' } : {})
+              }}
+            >
+              PYTORCH
+            </h3>
           </div>
           <p className="mono" style={{ fontSize: isMobile ? '1rem' : '1.2rem', marginBottom: '1.5rem', borderBottom: '2px solid rgba(255,255,255,0.3)', paddingBottom: '1rem' }}>C++ • ATen • Distributed Training</p>
           
