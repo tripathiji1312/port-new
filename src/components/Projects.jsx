@@ -2,10 +2,49 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const projects = [
-  { id: '01', title: 'Aura', tags: 'LSTM • DQN • Flask', desc: 'Hybrid glucose forecasting system with personalized LSTM models and optimal DQN dosing strategies.', link: 'https://github.com/tripathiji1312/Aura' },
-  { id: '02', title: 'Promptimus', tags: 'T5-220M • LoRA • RAG', desc: 'AI prompt optimizer fine-tuning a 220M parameter T5 model with LoRA, resolving intent preservation.', link: 'https://github.com/tripathiji1312/promptimus' },
-  { id: '03', title: 'StudyBoard', tags: 'Next.js 15 • AI • Supabase', desc: 'AI-powered academic command center featuring predictive GPA algorithms and focus tracking.', link: 'https://github.com/tripathiji1312/study_board' },
-  { id: '04', title: 'Ghost', tags: 'PyPI • Self-Healing AST', desc: 'Autonomous AI Test Agent for Python generating context-aware pytest suites via AST analysis.', link: 'https://github.com/tripathiji1312/ghost' },
+  { 
+    id: '01', 
+    title: 'Aura', 
+    tags: 'LSTM • DQN • Flask', 
+    desc: 'Hybrid glucose forecasting system with personalized LSTM models and optimal DQN dosing strategies.', 
+    link: 'https://github.com/tripathiji1312/Aura',
+    liveLink: 'https://huggingface.co/spaces/tripathiji1312/aura-diabetes-sim',
+    liveLabel: ':: LIVE_SIM'
+  },
+  { 
+    id: '02', 
+    title: 'Promptimus', 
+    tags: 'T5-220M • LoRA • RAG', 
+    desc: 'AI prompt optimizer fine-tuning a 220M parameter T5 model with LoRA, resolving intent preservation.', 
+    link: 'https://github.com/tripathiji1312/promptimus' 
+  },
+  { 
+    id: '03', 
+    title: 'StudyBoard', 
+    tags: 'Next.js 15 • AI • Supabase', 
+    desc: 'AI-powered academic command center featuring predictive GPA algorithms and focus tracking.', 
+    link: 'https://github.com/tripathiji1312/study_board',
+    liveLink: 'https://stubuddy.vercel.app/',
+    liveLabel: ':: LIVE_APP'
+  },
+  { 
+    id: '04', 
+    title: 'Ghost', 
+    tags: 'PyPI • Self-Healing AST', 
+    desc: 'Autonomous AI Test Agent for Python generating context-aware pytest suites via AST analysis.', 
+    link: 'https://github.com/tripathiji1312/ghost',
+    liveLink: 'https://pypi.org/project/ghosttest/',
+    liveLabel: ':: PYPI_PACKAGE'
+  },
+  {
+    id: '05', 
+    title: 'PhantomNode', 
+    tags: 'DSP • SECDED', 
+    desc: 'An air-gapped acoustic data transmission engine that streams digital payloads over inaudible, near-ultrasonic sound waves using advanced DSP.', 
+    link: 'https://github.com/tripathiji1312/PhantomNode',
+    liveLink: 'https://phantom-node-nine.vercel.app/',
+    liveLabel: ':: LIVE_DEMO'
+  }
 ];
 
 export default function Projects() {
@@ -38,7 +77,6 @@ export default function Projects() {
         >
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
             <h3 className="text-large" style={{ color: 'var(--bg-color)' }}>PYTORCH</h3>
-            <span className="mono" style={{ backgroundColor: 'var(--bg-color)', color: 'var(--accent-red)', padding: '0.5rem 1rem', fontSize: '1.2rem', fontWeight: 'bold' }}>CORE FRAMEWORK CONTRIBUTOR</span>
           </div>
           <p className="mono" style={{ fontSize: '1.2rem', marginBottom: '2rem', borderBottom: '2px solid rgba(255,255,255,0.3)', paddingBottom: '1rem' }}>C++ • ATen • Distributed Training</p>
           
@@ -46,13 +84,13 @@ export default function Projects() {
             <li style={{ display: 'flex', gap: '1rem', alignItems: 'start' }}>
               <span style={{ fontSize: '1.5rem' }}>🔥</span>
               <div>
-                <strong>Merged PR #174009:</strong> Ensured numerical consistency by resolving undefined behavior in C++ tensor indexing for the ATen library, impacting high-performance operations across CPU and CUDA backends.
+                <strong><a href="https://github.com/pytorch/pytorch/pull/174009" target="_blank" rel="noreferrer" style={{ textDecoration: 'underline' }}>Merged PR #174009</a>:</strong> Ensured numerical consistency by resolving undefined behavior in C++ tensor indexing for the ATen library, impacting high-performance operations across CPU and CUDA backends.
               </div>
             </li>
             <li style={{ display: 'flex', gap: '1rem', alignItems: 'start' }}>
               <span style={{ fontSize: '1.5rem' }}>🔥</span>
               <div>
-                <strong>Merged PR #174312:</strong> Optimized distributed sharding primitives by implementing exact type checks in the C++ dispatch layer, ensuring DTensor subclasses maintain custom dispatch logic in multi-GPU environments.
+                <strong><a href="https://github.com/pytorch/pytorch/pull/174312" target="_blank" rel="noreferrer" style={{ textDecoration: 'underline' }}>Merged PR #174312</a>:</strong> Optimized distributed sharding primitives by implementing exact type checks in the C++ dispatch layer, ensuring DTensor subclasses maintain custom dispatch logic in multi-GPU environments.
               </div>
             </li>
           </ul>
@@ -110,9 +148,16 @@ export default function Projects() {
               <p style={{ fontSize: '1.25rem', marginBottom: '3rem', fontWeight: 500 }}>{p.desc}</p>
             </div>
             
-            <a href={p.link} target="_blank" rel="noreferrer" className="btn" style={{ alignSelf: 'flex-start', backgroundColor: 'var(--text-color)', color: 'var(--bg-color)' }}>
-              :: INIT_CONNECTION
-            </a>
+            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+              <a href={p.link} target="_blank" rel="noreferrer" className="btn" style={{ backgroundColor: 'var(--text-color)', color: 'var(--bg-color)' }}>
+                :: VIEW_SOURCE
+              </a>
+              {p.liveLink && (
+                <a href={p.liveLink} target="_blank" rel="noreferrer" className="btn" style={{ backgroundColor: 'var(--accent-blue)', color: 'var(--bg-color)', borderColor: 'var(--accent-blue)' }}>
+                  {p.liveLabel}
+                </a>
+              )}
+            </div>
           </motion.div>
         ))}
       </motion.div>

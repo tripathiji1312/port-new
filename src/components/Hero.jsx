@@ -14,6 +14,7 @@ export default function Hero() {
       flexDirection: 'column', 
       justifyContent: 'center',
       paddingTop: '15vh',
+      paddingBottom: '20vh',
       position: 'relative',
       overflow: 'hidden'
     }}>
@@ -87,7 +88,7 @@ export default function Hero() {
       </motion.div>
 
       {/* Marquee Vibe at Bottom */}
-      <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, borderTop: '2px solid var(--text-color)', borderBottom: '2px solid var(--text-color)', overflow: 'hidden', padding: '1rem 0', display: 'flex', whiteSpace: 'nowrap', backgroundColor: 'var(--accent-blue)', color: 'var(--bg-color)', zIndex: 1, transform: 'rotate(-2deg) scale(1.1)', transformOrigin: 'center' }}>
+      <div style={{ position: 'absolute', bottom: '2rem', left: '-5%', right: '-5%', borderTop: '2px solid var(--text-color)', borderBottom: '2px solid var(--text-color)', overflow: 'hidden', padding: '1rem 0', display: 'flex', whiteSpace: 'nowrap', backgroundColor: 'var(--accent-blue)', color: 'var(--bg-color)', zIndex: 1, transform: 'rotate(-2deg)', transformOrigin: 'center' }}>
         <motion.div
            animate={{ x: [0, -1000] }}
            transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
