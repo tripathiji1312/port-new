@@ -88,7 +88,7 @@ export default function Hero() {
       </motion.div>
 
       {/* Marquee Vibe at Bottom */}
-      <div style={{ position: 'absolute', bottom: '2rem', left: '-5%', right: '-5%', borderTop: '2px solid var(--text-color)', borderBottom: '2px solid var(--text-color)', overflow: 'hidden', padding: '1rem 0', display: 'flex', whiteSpace: 'nowrap', backgroundColor: 'var(--accent-blue)', color: 'var(--bg-color)', zIndex: 1, transform: 'rotate(-2deg)', transformOrigin: 'center' }}>
+      <div style={{ position: 'absolute', bottom: '2rem', left: '50%', width: '110vw', borderTop: '2px solid var(--text-color)', borderBottom: '2px solid var(--text-color)', overflow: 'hidden', padding: '1rem 0', display: 'flex', whiteSpace: 'nowrap', backgroundColor: 'var(--accent-blue)', color: 'var(--bg-color)', zIndex: 1, transform: 'translateX(-50%) rotate(-2deg)', transformOrigin: 'center' }}>
         <motion.div
            animate={{ x: [0, -1000] }}
            transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
