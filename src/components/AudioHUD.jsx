@@ -4,6 +4,16 @@ import { motion } from 'framer-motion';
 export default function AudioHUD() {
   const [audioOn, setAudioOn] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' && window.innerWidth < 768);
+
+  // Update mobile detection on resize
+  React.useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Update mouse position for custom cursor
   useEffect(() => {
@@ -139,51 +149,55 @@ export default function AudioHUD() {
 
   return (
     <>
-      {/* Custom Cursor Circle */}
-      <motion.div
-        className="custom-cursor"
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: 30,
-          height: 30,
-          borderRadius: '50%',
-          border: '2px solid var(--accent-red)',
-          pointerEvents: 'none',
-          zIndex: 9999,
-          mixBlendMode: 'difference'
-        }}
-        animate={{
-          x: mousePos.x - 15,
-          y: mousePos.y - 15,
-        }}
-        transition={{ type: 'spring', stiffness: 500, damping: 28, mass: 0.5 }}
-      />
-      <motion.div
-        className="custom-cursor"
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: 8,
-          height: 8,
-          backgroundColor: 'var(--accent-blue)',
-          borderRadius: '50%',
-          pointerEvents: 'none',
-          zIndex: 10000,
-        }}
-        animate={{
-          x: mousePos.x - 4,
-          y: mousePos.y - 4,
-        }}
-        transition={{ type: 'spring', stiffness: 1000, damping: 50, mass: 0.1 }}
-      />
+      {/* Custom Cursor Circle - Hidden on mobile */}
+      {!isMobile && (
+        <>
+          <motion.div
+            className="custom-cursor"
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              width: 30,
+              height: 30,
+              borderRadius: '50%',
+              border: '2px solid var(--accent-red)',
+              pointerEvents: 'none',
+              zIndex: 9999,
+              mixBlendMode: 'difference'
+            }}
+            animate={{
+              x: mousePos.x - 15,
+              y: mousePos.y - 15,
+            }}
+            transition={{ type: 'spring', stiffness: 500, damping: 28, mass: 0.5 }}
+          />
+          <motion.div
+            className="custom-cursor"
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              width: 8,
+              height: 8,
+              backgroundColor: 'var(--accent-blue)',
+              borderRadius: '50%',
+              pointerEvents: 'none',
+              zIndex: 10000,
+            }}
+            animate={{
+              x: mousePos.x - 4,
+              y: mousePos.y - 4,
+            }}
+            transition={{ type: 'spring', stiffness: 1000, damping: 50, mass: 0.1 }}
+          />
+        </>
+      )}
 
       {/* Floating HUD */}
-      <div className="audio-hud-container" style={{ position: 'fixed', top: '2rem', right: '2rem', zIndex: 100, display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'flex-end', pointerEvents: 'none' }}>
+      <div className="audio-hud-container" style={{ position: 'fixed', top: isMobile ? '1rem' : '2rem', right: isMobile ? '1rem' : '2rem', zIndex: 100, display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'flex-end', pointerEvents: 'none' }}>
         
-        <div className="mono" style={{ backgroundColor: 'var(--text-color)', color: 'var(--bg-color)', padding: '0.2rem 0.5rem', fontSize: '0.8rem', pointerEvents: 'auto' }}>
+        <div className="mono" style={{ backgroundColor: 'var(--text-color)', color: 'var(--bg-color)', padding: isMobile ? '0.15rem 0.4rem' : '0.2rem 0.5rem', fontSize: isMobile ? '0.75rem' : '0.8rem', pointerEvents: 'auto' }}>
           SYS.LOC: MAIN_INDEX
         </div>
 
@@ -195,11 +209,16 @@ export default function AudioHUD() {
             backgroundColor: audioOn ? 'var(--accent-yellow)' : 'var(--bg-color)', 
             color: 'var(--text-color)', 
             border: '2px solid var(--text-color)',
-            padding: '0.2rem 0.5rem', 
-            fontSize: '0.8rem',
+            padding: isMobile ? '0.15rem 0.4rem' : '0.2rem 0.5rem', 
+            fontSize: isMobile ? '0.75rem' : '0.8rem',
             cursor: 'pointer',
             transition: 'all 0.2s',
-            outline: 'none'
+            outline: 'none',
+            minHeight: isMobile ? '32px' : '35px',
+            minWidth: isMobile ? '32px' : '35px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
           }}
         >
           [ AUDIO: {audioOn ? 'ON' : 'OFF'} ]

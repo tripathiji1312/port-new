@@ -48,6 +48,8 @@ const projects = [
 ];
 
 export default function Projects() {
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+  
   const containerVariants = {
     hidden: { opacity: 0 },
     show: {
@@ -64,31 +66,31 @@ export default function Projects() {
   return (
     <section className="container section-padding border-top" id="projects">
       {/* MASSIVE OPEN SOURCE SECTION */}
-      <h2 style={{ fontSize: '1.5rem', marginBottom: '2rem' }}>/// OPEN SOURCE TRENCHES</h2>
+      <h2 style={{ fontSize: isMobile ? '1.2rem' : '1.5rem', marginBottom: '2rem' }}>/// OPEN SOURCE TRENCHES</h2>
       
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: 'var(--grid-gap)', marginBottom: '6rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(400px, 1fr))', gap: 'var(--grid-gap)', marginBottom: '4rem' }}>
         <motion.div 
-          style={{ backgroundColor: 'var(--accent-red)', color: 'var(--bg-color)', padding: '3rem', gridColumn: '1 / -1', border: '4px solid var(--text-color)' }}
+          style={{ backgroundColor: 'var(--accent-red)', color: 'var(--bg-color)', padding: isMobile ? '2rem' : '3rem', gridColumn: isMobile ? '1' : '1 / -1', border: '3px solid var(--text-color)' }}
           initial={{ rotateX: 90, opacity: 0 }}
           whileInView={{ rotateX: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ type: 'spring', damping: 20 }}
-          whileHover={{ y: -5, boxShadow: '0 20px 0px var(--text-color)' }}
+          whileHover={isMobile ? {} : { y: -5, boxShadow: '0 20px 0px var(--text-color)' }}
         >
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
-            <h3 className="text-large" style={{ color: 'var(--bg-color)' }}>PYTORCH</h3>
+            <h3 className="text-large" style={{ color: 'var(--bg-color)', fontSize: isMobile ? '2rem' : 'inherit' }}>PYTORCH</h3>
           </div>
-          <p className="mono" style={{ fontSize: '1.2rem', marginBottom: '2rem', borderBottom: '2px solid rgba(255,255,255,0.3)', paddingBottom: '1rem' }}>C++ • ATen • Distributed Training</p>
+          <p className="mono" style={{ fontSize: isMobile ? '1rem' : '1.2rem', marginBottom: '1.5rem', borderBottom: '2px solid rgba(255,255,255,0.3)', paddingBottom: '1rem' }}>C++ • ATen • Distributed Training</p>
           
-          <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '1.5rem', fontSize: '1.25rem' }}>
+          <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: isMobile ? '1rem' : '1.5rem', fontSize: isMobile ? '1rem' : '1.25rem' }}>
             <li style={{ display: 'flex', gap: '1rem', alignItems: 'start' }}>
-              <span style={{ fontSize: '1.5rem' }}>🔥</span>
+              <span style={{ fontSize: '1.5rem', flexShrink: 0 }}>🔥</span>
               <div>
                 <strong><a href="https://github.com/pytorch/pytorch/pull/174009" target="_blank" rel="noreferrer" style={{ textDecoration: 'underline' }}>Merged PR #174009</a>:</strong> Ensured numerical consistency by resolving undefined behavior in C++ tensor indexing for the ATen library, impacting high-performance operations across CPU and CUDA backends.
               </div>
             </li>
             <li style={{ display: 'flex', gap: '1rem', alignItems: 'start' }}>
-              <span style={{ fontSize: '1.5rem' }}>🔥</span>
+              <span style={{ fontSize: '1.5rem', flexShrink: 0 }}>🔥</span>
               <div>
                 <strong><a href="https://github.com/pytorch/pytorch/pull/174312" target="_blank" rel="noreferrer" style={{ textDecoration: 'underline' }}>Merged PR #174312</a>:</strong> Optimized distributed sharding primitives by implementing exact type checks in the C++ dispatch layer, ensuring DTensor subclasses maintain custom dispatch logic in multi-GPU environments.
               </div>
@@ -101,18 +103,18 @@ export default function Projects() {
            whileInView={{ opacity: 1, scale: 1 }}
            viewport={{ once: true }}
            transition={{ duration: 0.5 }}
-           style={{ border: '4px dashed var(--text-color)', padding: '2rem', backgroundColor: '#F4F4F0' }}
+           style={{ border: '3px dashed var(--text-color)', padding: isMobile ? '1.5rem' : '2rem', backgroundColor: '#F4F4F0' }}
         >
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem' }}>
-            <h4 style={{ fontSize: '2rem' }}>GOOGLE JAX</h4>
-            <span className="mono" style={{ color: 'var(--accent-blue)', fontWeight: 'bold' }}>[ MERGED PR #32046 ]</span>
+          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1rem', flexWrap: 'wrap', gap: '1rem', alignItems: 'flex-start' }}>
+            <h4 style={{ fontSize: isMobile ? '1.5rem' : '2rem' }}>GOOGLE JAX</h4>
+            <span className="mono" style={{ color: 'var(--accent-blue)', fontWeight: 'bold', fontSize: isMobile ? '0.8rem' : '1rem', textAlign: 'right' }}>[ MERGED PR #32046 ]</span>
           </div>
-          <p style={{ fontSize: '1.2rem' }}>Aligned CUDA 13 installation instructions for improved developer experience and ecosystem compatibility.</p>
+          <p style={{ fontSize: isMobile ? '1rem' : '1.2rem' }}>Aligned CUDA 13 installation instructions for improved developer experience and ecosystem compatibility.</p>
         </motion.div>
       </div>
 
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'end', marginBottom: '4rem' }}>
-        <h2 style={{ fontSize: '1.5rem', margin: 0 }}>/// 02<br/>SELECTED<br/>OPERATIONS</h2>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'end', marginBottom: '3rem', flexWrap: 'wrap', gap: '1.5rem' }}>
+        <h2 style={{ fontSize: isMobile ? '1.2rem' : '1.5rem', margin: 0 }}>/// 02<br/>SELECTED<br/>OPERATIONS</h2>
       </div>
 
       <motion.div 
@@ -120,40 +122,40 @@ export default function Projects() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
-        style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))', gap: 'var(--grid-gap)', marginBottom: '4rem' }}
+        style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(380px, 1fr))', gap: 'var(--grid-gap)', marginBottom: '4rem' }}
       >
         {projects.map((p, i) => (
           <motion.div 
             key={i}
             variants={itemVariants}
-            whileHover={{ y: -15, scale: 1.02, rotate: i % 2 === 0 ? 1 : -1, zIndex: 10 }}
+            whileHover={isMobile ? {} : { y: -15, scale: 1.02, rotate: i % 2 === 0 ? 1 : -1, zIndex: 10 }}
             style={{ 
               border: '2px solid var(--text-color)', 
-              padding: '2.5rem', 
+              padding: isMobile ? '1.5rem' : '2.5rem', 
               display: 'flex', 
               flexDirection: 'column', 
               justifyContent: 'space-between',
-              minHeight: '400px',
+              minHeight: isMobile ? '350px' : '400px',
               backgroundColor: i % 3 === 0 ? 'var(--bg-color)' : i % 2 === 0 ? '#FFE0E0' : '#E0E8FF',
-              boxShadow: '4px 4px 0px var(--text-color)',
+              boxShadow: isMobile ? '2px 2px 0px var(--text-color)' : '4px 4px 0px var(--text-color)',
               position: 'relative'
             }}
           >
             <div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
-                <span className="mono" style={{ fontSize: '2.5rem', fontWeight: 'bold', lineHeight: '1' }}>{p.id}</span>
-                <span className="mono" style={{ fontSize: '0.8rem', opacity: 0.8, backgroundColor: 'var(--text-color)', color: 'var(--bg-color)', padding: '0.2rem 0.5rem' }}>{p.tags}</span>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: isMobile ? '1.5rem' : '2rem', flexWrap: 'wrap', gap: '0.5rem' }}>
+                <span className="mono" style={{ fontSize: isMobile ? '2rem' : '2.5rem', fontWeight: 'bold', lineHeight: '1' }}>{p.id}</span>
+                <span className="mono" style={{ fontSize: isMobile ? '0.7rem' : '0.8rem', opacity: 0.8, backgroundColor: 'var(--text-color)', color: 'var(--bg-color)', padding: '0.2rem 0.4rem', maxWidth: '100%' }}>{p.tags}</span>
               </div>
-              <h3 style={{ fontSize: '3rem', marginBottom: '1.5rem', lineHeight: '1' }}>{p.title}</h3>
-              <p style={{ fontSize: '1.25rem', marginBottom: '3rem', fontWeight: 500 }}>{p.desc}</p>
+              <h3 style={{ fontSize: isMobile ? '1.75rem' : '3rem', marginBottom: '1rem', lineHeight: '1' }}>{p.title}</h3>
+              <p style={{ fontSize: isMobile ? '1rem' : '1.25rem', marginBottom: isMobile ? '2rem' : '3rem', fontWeight: 500 }}>{p.desc}</p>
             </div>
             
-            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-              <a href={p.link} target="_blank" rel="noreferrer" className="btn" style={{ backgroundColor: 'var(--text-color)', color: 'var(--bg-color)' }}>
+            <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+              <a href={p.link} target="_blank" rel="noreferrer" className="btn" style={{ backgroundColor: 'var(--text-color)', color: 'var(--bg-color)', fontSize: isMobile ? '0.8rem' : '1rem', padding: isMobile ? '0.7rem 1rem' : '0.8rem 1.25rem' }}>
                 :: VIEW_SOURCE
               </a>
               {p.liveLink && (
-                <a href={p.liveLink} target="_blank" rel="noreferrer" className="btn" style={{ backgroundColor: 'var(--accent-blue)', color: 'var(--bg-color)', borderColor: 'var(--accent-blue)' }}>
+                <a href={p.liveLink} target="_blank" rel="noreferrer" className="btn" style={{ backgroundColor: 'var(--accent-blue)', color: 'var(--bg-color)', borderColor: 'var(--accent-blue)', fontSize: isMobile ? '0.8rem' : '1rem', padding: isMobile ? '0.7rem 1rem' : '0.8rem 1.25rem' }}>
                   {p.liveLabel}
                 </a>
               )}
