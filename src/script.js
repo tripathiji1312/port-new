@@ -1,3 +1,13 @@
+const Lenis = window.Lenis;
+const gsap = window.gsap;
+const ScrollTrigger = window.ScrollTrigger;
+const SplitType = window.SplitType;
+const THREE = window.THREE;
+
+if (!Lenis || !gsap || !ScrollTrigger || !SplitType || !THREE) {
+  throw new Error('Required animation libraries failed to load.');
+}
+
 // 1. Smooth Scroll
 const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smooth: true });
 function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
