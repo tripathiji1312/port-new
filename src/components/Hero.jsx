@@ -90,6 +90,17 @@ export default function Hero() {
           </p>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', alignItems: 'flex-start' }}>
+          <motion.a
+            href="https://tripathiji1312.github.io/"
+            className="btn"
+            target="_blank"
+            rel="noreferrer"
+            style={{ fontSize: isMobile ? '0.85rem' : '1.1rem', padding: isMobile ? '0.8rem 1.3rem' : '1rem 2.2rem', border: '3px solid var(--text-color)', backgroundColor: 'var(--accent-yellow)' }}
+            whileHover={{ scale: isMobile ? 1.02 : 1.05, rotate: 2, backgroundColor: 'var(--accent-blue)', color: 'var(--bg-color)' }}
+            whileTap={{ scale: 0.95 }}
+          >
+            :: BLOG
+          </motion.a>
           <motion.a 
             href="#projects" 
             className="btn"
@@ -99,6 +110,7 @@ export default function Hero() {
           >
             :: INITIATE_EXPLORATION
           </motion.a>
+          
         </div>
       </motion.div>
 

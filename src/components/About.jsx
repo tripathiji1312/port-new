@@ -66,9 +66,9 @@ export default function About() {
               <h4 style={{ fontSize: isMobile ? '1.25rem' : '1.5rem', marginBottom: '0.5rem' }}>MACHINE LEARNING ENGINEER INTERN</h4>
               <p className="mono" style={{ marginBottom: '1rem', color: '#666', fontWeight: 'bold', fontSize: isMobile ? '0.85rem' : '1rem' }}>MIRAI (FASHION TECH) • HYBRID • DEC 2025 – FEB 2026</p>
               <ul style={{ listStyleType: 'square', marginLeft: '1.2rem', display: 'flex', flexDirection: 'column', gap: isMobile ? '0.75rem' : '1rem', fontSize: isMobile ? '0.95rem' : '1.1rem', lineHeight: '1.5' }}>
-                <li>Architected a sub-100ms recommendation pipeline using <strong>CLIP embeddings and FAISS</strong>, optimizing vector similarity search for 16,000+ items under high-throughput concurrent loads.</li>
-                <li>Engineered context-aware user representations to solve the cold-start problem, driving measurable improvements in recommendation relevance and downstream user engagement.</li>
-                <li>Deployed optimized ML inference models directly into production environments.</li>
+                <li>Enabled real-time matching for 16k+ SKUs by architecting a hybrid ranking engine using <strong>CLIP embeddings and FAISS</strong>, optimizing for high-throughput vector search and reducing search latency by 40%.</li>
+                <li>Improved recommendation relevance by ~20% over baselines by engineering a multi-query retrieval pipeline with Reciprocal Rank Fusion (RRF), combining visual styling vectors with deterministic Pandas rule-based filtering.</li>
+                <li>Optimized FastAPI inference endpoints to achieve sub-100ms latency and support 500+ concurrent requests by implementing batched FAISS vector searches and vectorized Pandas scoring operations.</li>
               </ul>
             </motion.div>
           </div>
