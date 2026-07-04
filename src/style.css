@@ -112,6 +112,25 @@ button:active, .btn:active {
   transform: scale(0.98);
 }
 
+/* Cursor pointer on all interactive elements */
+a[href], button, [role="button"], .btn {
+  cursor: pointer;
+}
+
+/* Reduced motion: disable all animations for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .custom-cursor {
+    display: none !important;
+  }
+}
+
 /* Mobile-First Responsive Design */
 
 /* Small Mobile (< 480px) */

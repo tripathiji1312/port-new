@@ -19,8 +19,8 @@
   "theme_color": "#F4F4F0",
   "background_color": "#F4F4F0",
   "display": "standalone",
-  "start_url": "https://tripathiji.vercel.app/",
-  "scope": "https://tripathiji.vercel.app/",
+  "start_url": "https://swarnim.site/",
+  "scope": "https://swarnim.site/",
   "orientation": "portrait-primary",
   "screenshots": [
     {

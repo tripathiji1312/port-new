@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 Disallow: 
 
-Sitemap: https://tripathiji.vercel.app/sitemap.xml
+Sitemap: https://swarnim.site/sitemap.xml
 
 # Crawl delay to be respectful
 Crawl-delay: 1
